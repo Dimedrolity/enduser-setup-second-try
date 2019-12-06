@@ -1,18 +1,21 @@
 <template>
-    <main class="panel">
-      <p class="panel-heading has-text-centered">Setup Device</p>
-      <br />
+  <main class="panel">
+    <p class="panel-heading has-text-centered">Setup Device</p>
+    <br />
 
-      <div class="columns is-centered">
-        <div class="column is-4">
-          <label class="label">Your wifi is</label>
+    <div class="columns is-marginless is-mobile is-centered">
+      <form
+        class="column is-full-mobile is-four-fifths-tablet is-one-third-desktop is-one-quarter-widescreen is-one-quarter-fullhd"
+      >
+        <div class="field">
+          <label class="label" for="wifi">Your wifi is</label>
           <div class="field is-grouped">
-            <p v-if="isManualSetup" class="control is-expanded has-icons-left">
-              <input class="input is-link" type="text" placeholder="Type me" />
+            <div v-if="isManualSetup" class="control is-expanded has-icons-left">
+              <input id="wifi" class="input is-link" type="text" placeholder="Type me" />
               <span class="icon is-small is-left">
                 <i class="fas fa-wifi"></i>
               </span>
-            </p>
+            </div>
             <div v-else class="control is-expanded has-icons-left">
               <div class="select is-fullwidth is-info">
                 <select name="wifi-net">
@@ -30,36 +33,38 @@
               <a v-else class="button is-info" v-on:click="switchSetup()">Manual</a>
             </p>
           </div>
+        </div>
 
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input is-primary"
-                :type="isPasswordHidden ? 'password' : 'text'"
-                placeholder="********"
-              />
-              <span class="icon is-small is-left">
-                <i class="fas fa-unlock-alt"></i>
-              </span>
+        <div class="field">
+          <label class="label" for="password">Password</label>
+          <div class="control has-icons-left has-icons-right">
+            <input
+              id="password"
+              class="input is-primary"
+              :type="isPasswordHidden ? 'password' : 'text'"
+              placeholder="********"
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-unlock-alt"></i>
+            </span>
 
-              <span
-                v-on:click="changePasswordDisplay()"
-                class="icon is-small is-right"
-                style="pointer-events: initial"
-              >
-                <i v-if="isPasswordHidden" class="fas fa-eye"></i>
-                <i v-else class="fas fa-eye-slash"></i>
-              </span>
-            </div>
-          </div>
-
-          <div class="panel-block">
-            <button class="button is-link is-outlined is-fullwidth">Save setup</button>
+            <span
+              v-on:click="changePasswordDisplay()"
+              class="icon is-small is-right"
+              style="pointer-events: initial"
+            >
+              <i v-if="isPasswordHidden" class="fas fa-eye"></i>
+              <i v-else class="fas fa-eye-slash"></i>
+            </span>
           </div>
         </div>
-      </div>
-    </main>
+
+        <div class="field">
+          <button class="button is-link is-outlined is-fullwidth">Save setup</button>
+        </div>
+      </form>
+    </div>
+  </main>
 </template>
 
 <script>
