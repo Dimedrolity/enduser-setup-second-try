@@ -1,6 +1,5 @@
 <template>
-  <main>
-    <nav class="panel">
+    <main class="panel">
       <p class="panel-heading has-text-centered">Setup Device</p>
       <br />
 
@@ -60,8 +59,7 @@
           </div>
         </div>
       </div>
-    </nav>
-  </main>
+    </main>
 </template>
 
 <script>
@@ -77,7 +75,7 @@ export default {
   data() {
     return {
       isManualSetup: true,
-      isPasswordHidden: false
+      isPasswordHidden: true
     };
   },
 
