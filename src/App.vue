@@ -1,20 +1,20 @@
 <template>
   <div>
-    <UserSetup :wifiNets="wifiNets"></UserSetup>
-    <!-- нужно будет передать список wifi сетей компоненту UserSetup -->
+    <UserSetup :wifiNets="wifiNets" @request-wifi-nets-from-app="loadNetworksFromJson()"></UserSetup>
   </div>
 </template>
 
 <script>
 import UserSetup from "./components/UserSetup";
+import { networkInterfaces } from "os";
+// import networks from "../api/networks.json";
 
-// читаем из json файла сети
-let wifiNets = [
-  { id: 0, name: "I am wifi" },
-  { id: 1, name: "I am too" },
-  { id: 2, name: "Subscribe to PewDiePie" },
-  { id: 3, name: "Slavik007" }
-];
+// let wifiNets = [
+//   {
+//     id: 1,
+//     name: "I am wifi"
+//   }
+// ];
 
 export default {
   name: "app",
@@ -23,8 +23,21 @@ export default {
   },
   data() {
     return {
-      wifiNets: wifiNets
+      wifiNets: []
     };
+  },
+  methods: {
+    async loadNetworksFromJson() {
+      const networkModule = await import("../api/networks.json");
+      const networks = networkModule.wifiNets;
+      const networksWithID = [networks.length];
+
+      for (let i = 0; i < networks.length; i++) {
+        networksWithID[i] = { name: networks[i].name, id: i };
+      }
+
+      this.wifiNets = networksWithID;
+    }
   }
 };
 </script>

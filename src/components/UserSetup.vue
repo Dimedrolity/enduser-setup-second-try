@@ -29,8 +29,12 @@
             </div>
 
             <p class="control">
-              <a v-if="isManualSetup" class="button is-info" v-on:click="switchSetup()">Scan</a>
-              <a v-else class="button is-info" v-on:click="switchSetup()">Manual</a>
+              <a
+                v-if="isManualSetup"
+                class="button is-info"
+                v-on:click="switchSetupMode(); requestWifiNetsFromApp();"
+              >Scan</a>
+              <a v-else class="button is-info" v-on:click="switchSetupMode();">Manual</a>
             </p>
           </div>
         </div>
@@ -85,11 +89,14 @@ export default {
   },
 
   methods: {
-    switchSetup() {
-      this.isManualSetup = this.isManualSetup ? false : true;
+    switchSetupMode() {
+      this.isManualSetup = !this.isManualSetup;
     },
     changePasswordDisplay() {
-      this.isPasswordHidden = this.isPasswordHidden ? false : true;
+      this.isPasswordHidden = !this.isPasswordHidden;
+    },
+    requestWifiNetsFromApp() {
+      this.$emit('request-wifi-nets-from-app');
     }
   }
 };
