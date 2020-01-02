@@ -2,6 +2,8 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 let HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 
 module.exports = {
+  outputDir: "dist",
+  assetsDir: "trash(assets)",
   configureWebpack: {
     plugins: [
       new HtmlWebpackPlugin({
@@ -10,6 +12,5 @@ module.exports = {
       }),
       new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
     ]
-
   }
 }

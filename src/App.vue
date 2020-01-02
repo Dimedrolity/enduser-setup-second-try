@@ -7,12 +7,12 @@
 <script>
 import UserSetup from "./components/UserSetup";
 
-// let wifiNets = [
-//   {
-//     id: 1,
-//     name: "I am wifi"
-//   }
-// ];
+let wifiNets = [
+  {
+    id: 1,
+    name: "I am wifi"
+  }
+];
 
 export default {
   name: "app",
@@ -21,21 +21,19 @@ export default {
   },
   data() {
     return {
-      wifiNets: []
+      // wifiNets: []
+      wifiNets: wifiNets
     };
   },
   methods: {
-    async loadNetworksFromJson() {
-      const networksModule = await import('./networks.json');
-      const networks = networksModule.wifiNets;
-      const networksWithID = [networks.length];
-
-      for (let i = 0; i < networks.length; i++) {
-        networksWithID[i] = { name: networks[i].name, id: i };
-      }
-
-      this.wifiNets = networksWithID;
-    }
+    // async loadNetworksFromJson() {
+    //   const networksModule = await import('./networks.json');
+    //   const networks = networksModule.wifiNets;
+    //   const networksWithID = [networks.length];
+    //   for (let i = 0; i < networks.length; i++) {
+    //     networksWithID[i] = { name: networks[i].name, id: i };
+    //   }
+    //   this.wifiNets = networksWithID;
   }
 };
 </script>
