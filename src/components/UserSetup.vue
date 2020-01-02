@@ -1,6 +1,5 @@
 <template>
   <main class="panel">
-    
     <p class="panel-heading has-text-centered">Setup Device</p>
 
     <div class="panel-block columns is-marginless is-centered">
@@ -13,7 +12,7 @@
             <div v-if="isManualSetup" class="control is-expanded has-icons-left">
               <input id="wifi-input" class="input is-link" type="text" placeholder="Type me" />
               <span class="icon is-small is-left">
-                <i class="fas fa-wifi"></i>
+                <font-awesome-icon :icon="['fas', 'wifi']" />
               </span>
             </div>
             <div v-else class="control is-expanded has-icons-left">
@@ -24,7 +23,7 @@
                 </select>
               </div>
               <span class="icon is-small is-left">
-                <i class="fas fa-wifi"></i>
+                <font-awesome-icon :icon="['fas', 'wifi']" />
               </span>
             </div>
 
@@ -49,7 +48,7 @@
               placeholder="********"
             />
             <span class="icon is-small is-left">
-              <i class="fas fa-unlock-alt"></i>
+              <font-awesome-icon :icon="['fas', 'unlock-alt']" />
             </span>
 
             <span
@@ -57,8 +56,8 @@
               class="icon is-small is-right"
               style="pointer-events: initial"
             >
-              <i v-if="isPasswordHidden" class="fas fa-eye"></i>
-              <i v-else class="fas fa-eye-slash"></i>
+              <font-awesome-icon v-if="isPasswordHidden" :icon="['fas', 'eye']" />
+              <font-awesome-icon v-else :icon="['fas', 'eye-slash']" />
             </span>
           </div>
         </div>
@@ -70,7 +69,6 @@
         </div>
       </form>
     </div>
-
   </main>
 </template>
 
