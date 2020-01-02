@@ -1,9 +1,9 @@
 <template>
   <main class="panel">
+    
     <p class="panel-heading has-text-centered">Setup Device</p>
-    <br />
 
-    <div class="columns is-marginless is-mobile is-centered">
+    <div class="panel-block columns is-marginless is-centered">
       <form
         class="column is-full-mobile is-four-fifths-tablet is-one-third-desktop is-one-quarter-widescreen is-one-quarter-fullhd"
       >
@@ -11,14 +11,14 @@
           <label class="label" for="wifi">Your wifi is</label>
           <div class="field is-grouped">
             <div v-if="isManualSetup" class="control is-expanded has-icons-left">
-              <input id="wifi" class="input is-link" type="text" placeholder="Type me" />
+              <input id="wifi-input" class="input is-link" type="text" placeholder="Type me" />
               <span class="icon is-small is-left">
                 <i class="fas fa-wifi"></i>
               </span>
             </div>
             <div v-else class="control is-expanded has-icons-left">
               <div class="select is-fullwidth is-info">
-                <select name="wifi-net">
+                <select id="wifi-select" name="wifi-net">
                   <option value="select-value">Select Wifi</option>
                   <option v-for="wifi in wifiNets" :key="wifi.id" value="wifi.id">{{wifi.name}}</option>
                 </select>
@@ -32,9 +32,9 @@
               <a
                 v-if="isManualSetup"
                 class="button is-info"
-                v-on:click="switchSetupMode(); requestWifiNetsFromApp();"
+                @click="switchSetupMode(); requestWifiNetsFromApp();"
               >Scan</a>
-              <a v-else class="button is-info" v-on:click="switchSetupMode();">Manual</a>
+              <a v-else class="button is-info" @click="switchSetupMode();">Manual</a>
             </p>
           </div>
         </div>
@@ -53,7 +53,7 @@
             </span>
 
             <span
-              v-on:click="changePasswordDisplay()"
+              @click="changePasswordDisplay()"
               class="icon is-small is-right"
               style="pointer-events: initial"
             >
@@ -64,10 +64,13 @@
         </div>
 
         <div class="field">
-          <button class="button is-link is-outlined is-fullwidth">Save setup</button>
+          <div class="control">
+            <button class="button is-link is-outlined is-fullwidth">Save setup</button>
+          </div>
         </div>
       </form>
     </div>
+
   </main>
 </template>
 
@@ -96,7 +99,7 @@ export default {
       this.isPasswordHidden = !this.isPasswordHidden;
     },
     requestWifiNetsFromApp() {
-      this.$emit('request-wifi-nets-from-app');
+      this.$emit("request-wifi-nets-from-app");
     }
   }
 };

@@ -6,8 +6,6 @@
 
 <script>
 import UserSetup from "./components/UserSetup";
-import { networkInterfaces } from "os";
-// import networks from "../api/networks.json";
 
 // let wifiNets = [
 //   {
@@ -28,8 +26,8 @@ export default {
   },
   methods: {
     async loadNetworksFromJson() {
-      const networkModule = await import("../api/networks.json");
-      const networks = networkModule.wifiNets;
+      const networksModule = await import('./networks.json');
+      const networks = networksModule.wifiNets;
       const networksWithID = [networks.length];
 
       for (let i = 0; i < networks.length; i++) {
