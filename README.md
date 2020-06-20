@@ -1,19 +1,8 @@
 # enduser-setup
 
-## Project setup
-```
-npm install
-```
+Создание интерфейса подключения устройства к сети WiFi для проекта COOLRF (по дисциплине Проектный практикум).
+Инструменты - HTML, Bulma и Vue.js. Проект создан с помощью vue-cli.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![User-setup](https://github.com/Dimedrolity/enduser-setup/raw/master/user-setup.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Собирается с помощью webpack в один html файл, содержащий css и js, а также создается архив html-файла. Файлы сборки лежат в папке build.
